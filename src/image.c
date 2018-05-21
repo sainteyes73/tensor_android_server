@@ -314,6 +314,7 @@ void draw_detections(image im, detection *dets, int num, float thresh, char **na
     }
     json_object_object_add(myobj,"data",arrayobj);
     printf("data=%d\n",json_object_to_json_string(myobj));
+    json_object_put(myobj);
 }
 
 void transpose_image(image im)
