@@ -3,15 +3,76 @@ var fs = require('fs');
 var express = require('express');
 var router = express.Router();
 var firebase = require("firebase");
+const AWS = require('aws-sdk');
+const parameters = require('../parameters')
+const Rekognition = require('../AWS/rekognition');
+const rekognition = new Rekognition(parameters.AWS);
+//const Rekognition = require('node-rekognition');
+/*
+AWS.config.update(
+  {
+    accessKeyId: "AKIAJ5QRWA2C2L5RR4PA",
+    secretAccessKey: "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",
+    region:"ap-northeast-1",
+    bucket:"refri"
+  }
+);
+*/
 //var database = firebase.database();
 var postkey;
-var config = {
+var fire_config = {
     apiKey: "AIzaSyDnrOWZAAUh_cQZK3hFBPUvBv81skxJhRQ",
     authDomain: "refri-97254.firebaseapp.com",
     databaseURL: "https://refri-97254.firebaseio.com",
     storageBucket: "refri-97254.appspot.com",
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(fire_config);
+
+//const rekognition = new Rekognition(AWSParameters);
+//var rekognition = new AWS.Rekognition({apiVersion: '2016-06-27'});
+
+
+var imagePaths="/Users/gim-useong/Desktop/file-upload/predictions.png";
+async function go(imagePaths, folder){
+  const aa=await rekognition.uploadToS3(imagePaths,folder);
+  const result = await rekognition.detectLabels(aa);
+  console.log(result);
+}
+go(imagePaths, parameters.defaultFolder);
+
+
+
+/*
+var params = {
+  Image: {
+   S3Object: {
+    Bucket: "refri",
+    Name: "dog.jpg"
+   }
+  },
+  MaxLabels: 123,
+  MinConfidence: 70
+ };
+ */
+ /*
+ rekognition.detectLabels(params, function(err, data) {
+   if (err) console.log(err, err.stack); // an error occurred
+   else     console.log(data);           // successful response
+   /*
+   data = {
+    Labels: [
+       {
+      Confidence: 99.25072479248047,
+      Name: "People"
+     },
+       {
+      Confidence: 99.25074005126953,
+      Name: "Person"
+     }
+    ]
+   }
+   */
+
 
 function writeUserData(userId, name) {
   firebase.database().ref('users/' + userId).set({
@@ -50,20 +111,7 @@ function writeNewData(uid, username,m_data,m_date) {
   //updates['/posts/' + newPostKey] = postData;
   updates['/user_data/' + uid + '/' + newPostKey] = postData;
   return firebase.database().ref().update(updates);
-  }
-
- function startYolo(){
-   setTimeout(function(){
-     var exec = require('child_process').exec;
-
-     exec("./darknet detect cfg/yolov3.cfg yolov3.weights data/uploads"+req.files.image.originalFilename, function (error, stdout, stderr) {
-     console.log('stdout: ' + stdout);
-     console.log('stderr: ' + stderr);
-     if (error !== null) {
-         console.log('error: ' + err);
-     }
-   },1500);
- }
+}
 module.exports = function(app){
 
   app.get('/',function(req,res){
@@ -94,7 +142,7 @@ app.post('/upload/:id',function(req,res){
       'postkey' : postkey
     });
   //  fs.exists('/Users/gim-useong/Desktop/tensor_android/MyApplication/nodejs/data'+req)
-    //});
+    //
    }
  });
 });

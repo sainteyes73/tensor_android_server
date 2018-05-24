@@ -1,0 +1,10 @@
+{
+    "AWS": {
+        "accessKeyId": "AKIAJ5QRWA2C2L5RR4PA",
+        "secretAccessKey": "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",
+        "region": "ap-northeast-1",
+        "bucket": "refri",
+        "ACL": "XXX"
+    },
+    "defaultFolder": "refriBox/"
+}
