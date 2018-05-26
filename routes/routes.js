@@ -7,18 +7,8 @@ const AWS = require('aws-sdk');
 const parameters = require('../parameters')
 const Rekognition = require('../AWS/rekognition');
 const rekognition = new Rekognition(parameters.AWS);
-//const Rekognition = require('node-rekognition');
-/*
-AWS.config.update(
-  {
-    accessKeyId: "AKIAJ5QRWA2C2L5RR4PA",
-    secretAccessKey: "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",
-    region:"ap-northeast-1",
-    bucket:"refri"
-  }
-);
-*/
-//var database = firebase.database();
+const json_sort = require('./sort');
+
 var postkey;
 var fire_config = {
     apiKey: "AIzaSyDnrOWZAAUh_cQZK3hFBPUvBv81skxJhRQ",
@@ -28,50 +18,14 @@ var fire_config = {
   };
   firebase.initializeApp(fire_config);
 
-//const rekognition = new Rekognition(AWSParameters);
-//var rekognition = new AWS.Rekognition({apiVersion: '2016-06-27'});
 
-
-var imagePaths="/Users/gim-useong/Desktop/file-upload/predictions.png";
-async function go(imagePaths, folder){
+async function goreko(imagePaths, folder){
   const aa=await rekognition.uploadToS3(imagePaths,folder);
   const result = await rekognition.detectLabels(aa);
   console.log(result);
+  return result;
 }
-go(imagePaths, parameters.defaultFolder);
 
-
-
-/*
-var params = {
-  Image: {
-   S3Object: {
-    Bucket: "refri",
-    Name: "dog.jpg"
-   }
-  },
-  MaxLabels: 123,
-  MinConfidence: 70
- };
- */
- /*
- rekognition.detectLabels(params, function(err, data) {
-   if (err) console.log(err, err.stack); // an error occurred
-   else     console.log(data);           // successful response
-   /*
-   data = {
-    Labels: [
-       {
-      Confidence: 99.25072479248047,
-      Name: "People"
-     },
-       {
-      Confidence: 99.25074005126953,
-      Name: "Person"
-     }
-    ]
-   }
-   */
 
 
 function writeUserData(userId, name) {
@@ -135,14 +89,13 @@ app.post('/upload/:id',function(req,res){
   //  startYolo();
     var id=req.params.id;
     var today = todayDate();
-
-    writeNewData(id,"woosung",["apple","banana"],today);
+    var result = goreko(imagePaths, parameters.defaultFolder);
+    writeNewData(id,"woosung",json_sort(result),today);
     res.json({
       'response': "Saved",
       'postkey' : postkey
     });
-  //  fs.exists('/Users/gim-useong/Desktop/tensor_android/MyApplication/nodejs/data'+req)
-    //
+
    }
  });
 });

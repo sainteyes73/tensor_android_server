@@ -1,0 +1,24 @@
+
+{
+  Labels:
+   [ { Name: 'Food', Confidence: 94.59061431884766 },
+     { Name: 'Produce', Confidence: 94.59061431884766 },
+     { Name: 'Flora', Confidence: 90.30667114257812 },
+     { Name: 'Plant', Confidence: 90.30667114257812 },
+     { Name: 'Vegetable', Confidence: 90.30667114257812 },
+     { Name: 'Salad', Confidence: 68.15753173828125 },
+     { Name: 'Lunch', Confidence: 62.90190124511719 },
+     { Name: 'Meal', Confidence: 62.90190124511719 },
+     { Name: 'Dish', Confidence: 60.7694091796875 },
+     { Name: 'Plate', Confidence: 60.7694091796875 },
+     { Name: 'Fruit', Confidence: 59.90595245361328 },
+     { Name: 'Bowl', Confidence: 58.17835235595703 },
+     { Name: 'Blossom', Confidence: 50.627445220947266 },
+     { Name: 'Flower', Confidence: 50.627445220947266 },
+     { Name: 'Flower Arrangement', Confidence: 50.627445220947266 },
+     { Name: 'Ornament', Confidence: 50.627445220947266 },
+     { Name: 'Beverage', Confidence: 50.59221267700195 },
+     { Name: 'Drink', Confidence: 50.59221267700195 },
+     { Name: 'Juice', Confidence: 50.59221267700195 } ],
+  OrientationCorrection: 'ROTATE_0'
+ }
