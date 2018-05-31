@@ -4,7 +4,7 @@ module.exports=async function jsonsort(result){
   var arr = new Array;
   result.Labels.filter(function(item){
     if(item.Name==="Potato"){
-      arr.push("potato");
+      arr.push("Potato");
     }else if(item.Name==="Sweet Potato"){
       arr.push("sweet potato");
     }else if(item.Name==="Sweet Pepper"){
@@ -117,12 +117,24 @@ module.exports=async function jsonsort(result){
       arr.push("deodeok");
     }else if(item.Name==="Mushroom"){
       arr.push("mushroom");
-    }else if(item.Name==="Mushroom"){
-      arr.push("mushroom");
-    }else if(item.Name==="Mushroom"){
-      arr.push("mushroom");
     }else if(item.Name==="Cherry tomato"){
       arr.push("cherry tomato");//60
+    }else if(item.Name==="Head Cabbage"){
+      arr.push("head cabbage");
+    }else if(item.Name===("Pepper")){
+      arr.push("pepper");
+    }else if(item.Name===("Persimmon")){
+      arr.push("persimmon");
+    }else if(item.Name===("Bell Pepper")){
+      arr.push("Bell Pepper");
+    }else if(item.Name===("Squash")){
+      arr.push("Squash");
+    }else if(item.Name===("Flora")){
+      arr.push("flora");
+    }else if(item.Name===("Bean")){
+      arr.push("bean");
+    }else if(item.Name===("Green Bean")){
+      arr.push("green bean");
     }
   });
   console.log(arr);

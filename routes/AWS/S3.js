@@ -20,12 +20,7 @@ module.exports = class S3 {
         //this.ACL = AWSParameters.ACL
     }
 
-    /**
-     * Upload file to S3 bucket into specified folder
-     *
-     * @param {string} filePath
-     * @param {string} folder
-     */
+
     async upload(filePath, folder) {
         const s3FilePath = this.getS3FullPath(filePath, folder)
 
@@ -71,25 +66,14 @@ module.exports = class S3 {
         }
     }
 
-    /**
-     * Upload multiple files in parallel to S3 bucket into specified folder
-     *
-     * @param {Array.<strings>} filePaths
-     * @param {string} folder
-     * @returns {Promise.<Array>} of S3 files in the same input order
-     */
+
     async uploadMultiple(filePaths, folder) {
         return await Promise.all(
             filePaths.map(filePath => this.upload(filePath, folder))
         )
     }
 
-    /**
-     * Check if file exists in S3
-     *
-     * @param {string} s3FilePath
-     * @return {Promise.<boolean>}}
-     */
+
     async exists(s3FilePath) {
         return new Promise((resolve, reject) => {
             this.s3.headObject({ Key: s3FilePath }, function (err, data) {
@@ -101,12 +85,7 @@ module.exports = class S3 {
         })
     }
 
-    /**
-     * Creates the S3 path and checks the file format
-     *
-     * @param {string} filePath
-     * @param {string} folder
-     */
+    
     getS3FullPath(filePath, folder = 'node-rekognition-folder/') {
         const fileName = new Date().getTime() + '-' + filePath.split('/').pop()
         const extension = fileName.split('.').pop().toLowerCase()
