@@ -87,7 +87,7 @@ app.post('/upload/:id',function(req,res){
   console.log(req.body.author);
   fs.readFile(req.files.image.path, function(err, data){
 
-    var dirname = "/Users/gim-useong/Desktop/file-upload";
+    var dirname = "/home/ubuntu/tensor_android_server/image";
     var newPath = dirname + "/uploads" + req.files.image.originalFilename;
     fs.writeFile(newPath, data, function(err){
       if(err){
