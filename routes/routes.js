@@ -64,7 +64,7 @@ async function writeNewData(uid,m_date,newPath,author) {
     };
     // Get a key for a new Post.
   var newPostKey = firebase.database().ref().child('user_data').push().key;
-  //postkey=newPostKey; //전달할 포스트키 변수에 저장
+  postkey=newPostKey; //전달할 포스트키 변수에 저장
 
   var updates = {};
   updates['/posts/' + newPostKey] = postData;
@@ -98,7 +98,8 @@ app.post('/upload/:id',function(req,res){
         var today = todayDate();
         writeNewData(id,today,newPath,author);
         res.json({
-          'response': "Saved"
+          'response': "Saved",
+	  'postkey':postkey
     });
 
    }
