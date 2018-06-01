@@ -97,10 +97,10 @@ app.post('/upload/:id',function(req,res){
         var id=req.params.id;
         var today = todayDate();
         writeNewData(id,today,newPath,author);
-        res.json({
+
+        setTimeout(res.json({
           'response': "Saved",
-	  'postkey':postkey
-    });
+	         'postkey':postkey }),1000);
 
    }
  });
