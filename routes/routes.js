@@ -35,6 +35,7 @@ async function writeUserData(userId, name) {
 }
 function todayDate(){
   var today = new Date();
+  today.setHours(today.getHours() + 9);
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
@@ -67,9 +68,9 @@ async function writeNewData(uid,m_date,newPath,author) {
   postkey=newPostKey; //전달할 포스트키 변수에 저장
 
   var updates = {};
-  await updates['/posts/' + newPostKey] = postData;
-  await updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-  return firebase.database().ref().update(updates);
+  updates['/posts/' + newPostKey] = postData;
+  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+  return await firebase.database().ref().update(updates);
 }
 module.exports = function(app){
 
@@ -96,11 +97,11 @@ app.post('/upload/:id',function(req,res){
         var author = req.body.author;
         var id=req.params.id;
         var today = todayDate();
-    await writeNewData(id,today,newPath,author);
+        writeNewData(id,today,newPath,author);
 
         setTimeout(res.json({
           'response': "Saved",
-	         'postkey':postkey }),1000);
+	         'postkey':postkey }),3000);
 
    }
  });

@@ -122,6 +122,8 @@ module.exports=function jsonsort(result){
       arr.push("mushroom");
     }else if(item.Name==="Cherry tomato"){
       arr.push("cherry tomato");//60
-    });
+    };
   console.log(arr);
+
+});
 }
