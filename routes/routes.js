@@ -99,9 +99,9 @@ app.post('/upload/:id',function(req,res){
         var today = todayDate();
         writeNewData(id,today,newPath,author);
 
-        setTimeout(res.json({
+        setTimeout(function(){res.json({
           'response': "Saved",
-	         'postkey':postkey }),3000);
+	         'postkey':postkey })},5000);
 
    }
  });

@@ -1,4 +1,5 @@
 
+
 module.exports=async function jsonsort(result){
   var arr = new Array;
   result.Labels.filter(function(item){
@@ -37,11 +38,11 @@ module.exports=async function jsonsort(result){
     }else if(item.Name==="Beet"){
       arr.push("비트");
     }else if(item.Name==="Radish"){
-      arr.push("뮤");
+      arr.push("무");
     }else if(item.Name==="Turnip"){
-      arr.push("순무");
+      arr.push("무");
     }else if(item.Name==="Young Radish"){
-      arr.push("총각무");
+      arr.push("무");
     }else if(item.Name==="Eggplant"){
       arr.push("가지");
     }else if(item.Name==="Sesame leaves"){
@@ -65,11 +66,11 @@ module.exports=async function jsonsort(result){
     }else if(item.Name==="Cucumber"){
       arr.push("오이");
     }else if(item.Name==="Zucchini"){
-      arr.push("애호박");
+      arr.push("호박");
     }else if(item.Name==="Pumpkin"){
-      arr.push("늙은호박");
+      arr.push("호박");
     }else if(item.Name==="Sweet Pumpkin"){
-      arr.push("단호박");
+      arr.push("호박");
     }else if(item.Name==="Young Radish"){
       arr.push("열무");
     }else if(item.Name==="A Crown Daisy"){
@@ -123,19 +124,19 @@ module.exports=async function jsonsort(result){
     }else if(item.Name==="Cherry tomato"){
       arr.push("방울토마토");//60
     }else if(item.Name==="Head Cabbage"){
-      arr.push("브라시카 올레라케아");
+      arr.push("브로콜리");
     }else if(item.Name===("Pepper")){
       arr.push("피망");
     }else if(item.Name===("Persimmon")){
       arr.push("감");
     }else if(item.Name===("Bell Pepper")){
-      arr.push("단고추");
+      arr.push("고추");
     }else if(item.Name===("Squash")){
       arr.push("호박");
     }else if(item.Name===("Bean")){
       arr.push("콩");
     }else if(item.Name===("Green Bean")){
-      arr.push("풋강낭콩");
+      arr.push("콩");
     }else if(item.Name==="Litch"){
       arr.push("리치");
     }else if(item.Name==="Star fruit"){
@@ -173,17 +174,17 @@ module.exports=async function jsonsort(result){
     }else if(item.Name==="Guince"){
       arr.push("모과");
     }else if(item.Name==="Sweet persimmon"){
-      arr.push("단감");
+      arr.push("감");
     }else if(item.Name==="Soft persimmon"){
-      arr.push("홍시");
+      arr.push("감");
     }else if(item.Name==="Dried Persimmon"){
-      arr.push("곶감");
+      arr.push("감");
     }else if(item.Name==="Peach"){
       arr.push("복숭아");
     }else if(item.Name==="Heavenly peach"){
-      arr.push("천도복숭아");//90
+      arr.push("복숭아");//90
     }else if(item.Name==="Raspberry"){
-      arr.push("산딸기");
+      arr.push("라즈베리");
     }else if(item.Name==="Mulberry"){
       arr.push("오디");
     }else if(item.Name==="Pomegranate"){
@@ -191,9 +192,9 @@ module.exports=async function jsonsort(result){
     }else if(item.Name==="Grape"){
       arr.push("포도");
     }else if(item.Name==="Green grape"){
-      arr.push("청포도");
+      arr.push("포도");
     }else if(item.Name==="Kyoho grape"){
-      arr.push("거봉");
+      arr.push("포도");
     }else if(item.Name==="Hanrabong"){
       arr.push("한라봉");
     }else if(item.Name==="Lime"){
