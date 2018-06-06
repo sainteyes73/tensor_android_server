@@ -223,6 +223,50 @@ module.exports=async function jsonsort(result){
       arr.push("블루베리");
     }else if(item.Name==="Dragon fruit"){
       arr.push("용과");//110
+    }else if(item.Name==="Aloe"){
+      arr.push("알로에");
+    }else if(item.Name==="Yuja"){
+      arr.push("유자");
+    }else if(item.Name==="Gomchwi"){
+      arr.push("곰취");
+    }else if(item.Name==="Cheonhyehyang"){
+      arr.push("천혜향");
+    }else if(item.Name==="Kumquat"){
+      arr.push("귤");
+    }else if(item.Name==="Raisin"){
+      arr.push("포도");
+    }else if(item.Name==="Yellowish overripe cucumber"){
+      arr.push("노각");
+    }else if(item.Name==="Pomelo"){
+      arr.push("포멜로");
+    }else if(item.Name==="Prune"){
+      arr.push("자두");
+    }else if(item.Name==="Coconut"){
+      arr.push("코코넛");//120
+    }else if(item.Name==="A curied mallow"){
+      arr.push("아욱");
+    }else if(item.Name==="Parsley"){
+      arr.push("미나리");
+    }else if(item.Name==="Gingko nut"){
+      arr.push("은행");
+    }else if(item.Name==="Red bean"){
+      arr.push("팥");
+    }else if(item.Name==="Chestnut"){
+      arr.push("밤");
+    }else if(item.Name==="Acorn"){
+      arr.push("도토리");
+    }else if(item.Name==="Walnut"){
+      arr.push("호두");
+    }else if(item.Name==="Macadamia"){
+      arr.push("마카다미아");
+    }else if(item.Name==="Peanut"){
+      arr.push("땅콩");
+    }else if(item.Name==="Jujube"){
+      arr.push("대추");//130
+    }else if(item.Name==="Egg"){
+      arr.push("계란");
+    }else if(item.Name==="Rutabaga"){
+      arr.push("무");//132
     }
   });
   console.log(arr);

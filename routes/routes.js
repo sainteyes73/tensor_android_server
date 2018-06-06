@@ -10,6 +10,7 @@ const rekognition = new Rekognition(parameters.AWS);
 const json_sort = require('./sort');
 
 var postkey;
+var photo;
 var fire_config = {
     apiKey: "AIzaSyDnrOWZAAUh_cQZK3hFBPUvBv81skxJhRQ",
     authDomain: "refri-97254.firebaseapp.com",
@@ -21,6 +22,8 @@ var fire_config = {
 
 async function goreko(imagePaths, folder){
   const aa=await rekognition.uploadToS3(imagePaths,folder);
+  console.log(aa.Location);
+  photo=aa.Location;
   const result = await rekognition.detectLabels(aa);
   console.log(result);
   return result;
@@ -54,14 +57,17 @@ function todayDate(){
 
 async function writeNewData(uid,m_date,newPath,author) {
   // A post entry.
+  var value=null;
   var result =await goreko(newPath, parameters.defaultFolder);
-  var sort_result=await json_sort(result);
+  value=await json_sort(result);
+  
   var postData = {
       uid: uid,
-      body: sort_result,
+      body: value,
       title: m_date,
       author:author,
-      starCount:0
+      starCount:0,
+      photo:photo
     };
     // Get a key for a new Post.
   var newPostKey = firebase.database().ref().child('user_data').push().key;
@@ -71,6 +77,7 @@ async function writeNewData(uid,m_date,newPath,author) {
   updates['/posts/' + newPostKey] = postData;
   updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   return await firebase.database().ref().update(updates);
+
 }
 module.exports = function(app){
 
@@ -89,7 +96,7 @@ app.post('/upload/:id',function(req,res){
   fs.readFile(req.files.image.path, function(err, data){
 
     var dirname = "/home/ubuntu/tensor_android_server/image";
-    var newPath = dirname + "/uploads" + req.files.image.originalFilename;
+    var newPath = dirname+"/uploads"+req.files.image.originalFilename;
     fs.writeFile(newPath, data, function(err){
       if(err){
         res.json({'response':"Error"});
@@ -97,11 +104,12 @@ app.post('/upload/:id',function(req,res){
         var author = req.body.author;
         var id=req.params.id;
         var today = todayDate();
-        writeNewData(id,today,newPath,author);
+        writeNewData(id,today,newPath,author)
 
         setTimeout(function(){res.json({
           'response': "Saved",
-	         'postkey':postkey })},5000);
+	   'postkey':postkey })},7000);
+
 
    }
  });

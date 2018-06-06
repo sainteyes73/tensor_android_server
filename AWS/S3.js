@@ -12,12 +12,13 @@ module.exports = class S3 {
             accessKeyId: AWSParameters.accessKeyId,
             secretAccessKey: AWSParameters.secretAccessKey,
             region: AWSParameters.region,
+            ACL:'public-read',
             params: {
                 Bucket: AWSParameters.bucket
             }
         })
 
-        //this.ACL = AWSParameters.ACL
+       // this.ACL = ACL:'public-read'
     }
 
     /**
@@ -36,7 +37,8 @@ module.exports = class S3 {
 
                 const params = {
                     Key: s3FilePath,
-                    Body: fileStream
+                    Body: fileStream,
+     		    ACL:'public-read'
                 }
 
                 if (this.ACL) {
